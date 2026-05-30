@@ -1,9 +1,10 @@
 // Copyright 2022 NNTU-CS
-#include <iostream>
-#include <vector>
-#include <chrono>
 #include <time.h>
+#include <iostream>
+#include <chrono>
+#include <random>
 #include "tree.h"
+
 void printPerm(const std::vector<char>& perm) {
     if (perm.empty()) {
         std::cout << "empty";
@@ -16,14 +17,16 @@ void printPerm(const std::vector<char>& perm) {
 }
 
 int main() {
-    std::vector<char> in = { '0','1', '2', '3', '4', '5', '6', '7', '8'};
+    std::vector<char> in = { '0', '1', '2', '3', '4', '5', '6', '7', '8'};
     PMTree tree(in);
     auto f1_st = std::chrono::steady_clock::now();
     const std::vector<std::vector<char>>& perms = getAllPerms(tree);
     auto f1_en = std::chrono::steady_clock::now();
-    srand(time(NULL));
     std::cout << "func 1 rand permutations:\n";
-    int n = rand() % perms.size();
+    std::random_device rd; 
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> distrib(1, perms.size());
+    int n = distrib(gen);
     std::cout << n+1 << ": ";
     printPerm(perms[n]);
     std::cout << '\n';
