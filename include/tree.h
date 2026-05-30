@@ -6,7 +6,7 @@
 #include <algorithm>
 
 class PMTree {
-public:
+ public:
     struct Node {
         char value;
         std::vector<Node*> children;
@@ -17,7 +17,7 @@ public:
         }
     };
 
-private:
+ private:
     Node* root_;
 
     static Node* buildNode(char value, const std::vector<char>& available) {
@@ -49,7 +49,7 @@ private:
         delete node;
     }
 
-public:
+ public:
     explicit PMTree(std::vector<char> input) {
         std::sort(input.begin(), input.end());
         root_ = buildNode('\0', input);
