@@ -6,7 +6,8 @@
 #include <vector>
 #include  "tree.h"
 
-static void collectPerms(PMTree::Node* node, std::vector<char>& path, std::vector<std::vector<char>>& out) {
+static void collectPerms(PMTree::Node* node, std::vector<char>& path,
+                        std::vector<std::vector<char>>& out) {
     if (!node) return;
 
     if (node->children.empty()) {
@@ -26,7 +27,8 @@ std::vector<std::vector<char>> getAllPerms(PMTree& tree) {
     collectPerms(tree.getRoot(), path, result);
     return result;
 }
-static bool collectNthPerm(PMTree::Node* node, std::vector<char>& path, int& num, std::vector<char>& result) {
+static bool collectNthPerm(PMTree::Node* node, std::vector<char>& path, 
+                            int& num, std::vector<char>& result) {
     if (!node) return false;
 
     if (node->children.empty()) {
