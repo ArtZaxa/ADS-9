@@ -3,6 +3,7 @@
 #include <iostream>
 #include <chrono>
 #include <random>
+#include <vector>
 #include "tree.h"
 
 void printPerm(const std::vector<char>& perm) {
@@ -23,7 +24,7 @@ int main() {
     const std::vector<std::vector<char>>& perms = getAllPerms(tree);
     auto f1_en = std::chrono::steady_clock::now();
     std::cout << "func 1 rand permutations:\n";
-    std::random_device rd; 
+    std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> distrib(1, perms.size());
     int n = distrib(gen);
