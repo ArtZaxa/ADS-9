@@ -27,7 +27,7 @@ std::vector<std::vector<char>> getAllPerms(PMTree& tree) {
     collectPerms(tree.getRoot(), path, result);
     return result;
 }
-static bool collectNthPerm(PMTree::Node* node, std::vector<char>& path, 
+static bool collectNthPerm(PMTree::Node* node, std::vector<char>& path,
                             int& num, std::vector<char>& result) {
     if (!node) return false;
 
